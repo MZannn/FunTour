@@ -40,7 +40,7 @@ class OrderListItem extends StatelessWidget {
                 ),
                 // ignore: prefer_interpolation_to_compose_strings
                 Text(
-                  "${transactionModels.quantity} items • ${NumberFormat.currency(locale: 'id-ID', symbol: 'Rp. ', decimalDigits: 0).format(transactionModels.total)}",
+                  "${transactionModels.quantity} Tickets • ${NumberFormat.currency(locale: 'id-ID', symbol: 'Rp. ', decimalDigits: 0).format(transactionModels.total)}",
                   style: secondaryText400.copyWith(fontSize: 13),
                 ),
               ],

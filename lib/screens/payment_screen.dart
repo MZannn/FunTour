@@ -80,9 +80,16 @@ class PaymentScreen extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            transactionModels.tourModels.name,
-                            style: titleText400,
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width -
+                                2 * defaultMargin -
+                                182,
+                            child: Text(
+                              transactionModels.tourModels.name,
+                              style: titleText400,
+                              overflow: TextOverflow.clip,
+                              maxLines: 1,
+                            ),
                           ),
                           SizedBox(
                             width: MediaQuery.of(context).size.width -
@@ -225,7 +232,22 @@ class PaymentScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
             height: 45,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                final controller = Get.find<PaymentController>();
+                var id = controller.idIncrement();
+                mockTransaction.add(
+                  TransactionModels(
+                    id: id,
+                    tourModels: transactionModels.tourModels,
+                    quantity: quantity,
+                    dateTime: DateTime.now(),
+                    status: TransactionStatus.done,
+                    total: totalPrice.toInt(),
+                    userModels: mockUser,
+                  ),
+                );
+                Get.offAll(()=>const SuccessOrderScreen());
+              },
               style: ElevatedButton.styleFrom(
                   primary: mainColor,
                   elevation: 0,

@@ -18,11 +18,11 @@ class OrderScreen extends StatelessWidget {
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(
-                "Data",
+                "Your Orders",
                 style: titleText,
               ),
               Text(
-                "Data",
+                "Your order history",
                 style: secondaryText300,
               ),
             ]),
